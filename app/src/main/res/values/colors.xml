@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange_200">#FFD9A0</color>
+    <color name="orange_500">#FFBA55</color>
+    <color name="colorPrimary">#FFBA55</color>
+    <color name="orange_700">#FF9800</color>
+    <color name="teal_200">#FF9800</color>
+    <color name="teal_700">#F8C274</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="lightgray">#D5D5D5</color>
+    <color name="lavender">#8692f7</color>
+</resources>
