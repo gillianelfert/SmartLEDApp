@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import de.hawhamburg.smartledapp.R;
+import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -23,6 +24,8 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_profile);
+
+        profileViewModel.insert(new Profile("Test", true, true));
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
