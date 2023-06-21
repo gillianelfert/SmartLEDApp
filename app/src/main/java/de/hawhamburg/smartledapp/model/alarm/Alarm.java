@@ -1,23 +1,32 @@
 package de.hawhamburg.smartledapp.model.alarm;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.time.LocalTime;
 
+@Entity(tableName = "alarm_table")
 public class Alarm {
-    private LocalTime time;
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
     private boolean isActive;
 
-    public Alarm(LocalTime time, boolean isActive) {
-        this.time = time;
+    public Alarm(boolean isActive) {
+
         this.isActive = isActive;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public int getId() {
+        return id;
     }
+
+
 
     public boolean isActive() {
         return isActive;

@@ -2,7 +2,10 @@ package de.hawhamburg.smartledapp.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +13,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.profile.Profile;
+import de.hawhamburg.smartledapp.view.adapter.ProfileAdapter;
+import de.hawhamburg.smartledapp.viewmodel.AlarmViewModel;
 import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -25,7 +32,23 @@ public class ProfileActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_profile);
 
-        profileViewModel.insert(new Profile("Test", true, true));
+        RecyclerView recyclerView = findViewById(R.id.profilesRecView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        ProfileAdapter adapter = new ProfileAdapter();
+        recyclerView.setAdapter(adapter);
+
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+        profileViewModel.insert(new Profile("Jan",true,true));
+
+        profileViewModel.getAllProfiles().observe(this, new Observer<List<Profile>>() {
+            @Override
+            public void onChanged(List<Profile> profiles) {
+                adapter.setProfiles(profiles);
+            }
+        });
+
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);

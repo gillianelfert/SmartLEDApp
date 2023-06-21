@@ -1,4 +1,4 @@
-package de.hawhamburg.smartledapp.model.profile;
+package de.hawhamburg.smartledapp.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.hawhamburg.smartledapp.R;
+import de.hawhamburg.smartledapp.model.profile.Profile;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileHolder> {
 
