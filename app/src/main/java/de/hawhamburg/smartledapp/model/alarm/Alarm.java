@@ -12,7 +12,7 @@ public class Alarm {
     }
 
     public LocalTime getTime() {
-        return time;
+        return this.time;
     }
 
     public void setTime(LocalTime time) {
@@ -20,10 +20,10 @@ public class Alarm {
     }
 
     public boolean isActive() {
-        return isActive;
+        return this.isActive;
     }
 
     public void setActive(boolean active) {
-        isActive = active;
+        this.isActive = active;
     }
 }

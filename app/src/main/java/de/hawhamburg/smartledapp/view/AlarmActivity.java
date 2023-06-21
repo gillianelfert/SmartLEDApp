@@ -2,6 +2,8 @@ package de.hawhamburg.smartledapp.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +12,18 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import de.hawhamburg.smartledapp.R;
+import de.hawhamburg.smartledapp.model.alarm.Alarms;
+import de.hawhamburg.smartledapp.viewmodel.AlarmAdapter;
+import de.hawhamburg.smartledapp.viewmodel.AlarmViewModel;
 
 public class AlarmActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    AlarmViewModel alarmViewModel;
+    Alarms alarms;
+
+    AlarmAdapter alarmAdapter;
+
+    RecyclerView alarmsRecView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,5 +51,17 @@ public class AlarmActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        alarmViewModel = new AlarmViewModel();
+
+        alarms = new Alarms();
+
+        alarmsRecView = findViewById(R.id.alarmsRecView);
+        alarmsRecView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        alarmAdapter = new AlarmAdapter(getApplicationContext(), alarms.getAlarms());
+
+        alarmsRecView.setAdapter(alarmAdapter);
+
     }
 }
