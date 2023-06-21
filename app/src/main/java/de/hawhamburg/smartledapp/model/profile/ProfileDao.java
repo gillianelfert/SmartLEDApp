@@ -1,4 +1,4 @@
-package de.hawhamburg.smartledapp;
+package de.hawhamburg.smartledapp.model.profile;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

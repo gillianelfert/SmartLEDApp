@@ -8,8 +8,8 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import de.hawhamburg.smartledapp.Profile;
-import de.hawhamburg.smartledapp.ProfileRepository;
+import de.hawhamburg.smartledapp.model.profile.Profile;
+import de.hawhamburg.smartledapp.model.profile.ProfileRepository;
 
 
 public class ProfileViewModel extends AndroidViewModel {

@@ -1,4 +1,4 @@
-package de.hawhamburg.smartledapp;
+package de.hawhamburg.smartledapp.model.profile;
 
 import android.app.Application;
 import android.os.AsyncTask;
