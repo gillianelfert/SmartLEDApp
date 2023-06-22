@@ -31,7 +31,22 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
     public void onBindViewHolder(@NonNull ProfileHolder holder, int position) {
         Profile currentProfile = profiles.get(position);
         holder.profileNameTextView.setText(currentProfile.getName());
+        holder.modeTextView.setText(currentProfile.getModeString());
         holder.profileRadioButton.setChecked(currentProfile.isStatus());
+
+        holder.modeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentProfile.isReactsToClap();
+            }
+        });
+
+        holder.profileRadioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

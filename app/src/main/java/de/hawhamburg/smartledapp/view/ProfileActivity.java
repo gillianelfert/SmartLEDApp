@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,7 +41,6 @@ public class ProfileActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
-        profileViewModel.insert(new Profile("Jan",true,true));
 
         profileViewModel.getAllProfiles().observe(this, new Observer<List<Profile>>() {
             @Override
@@ -49,11 +49,11 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         getSupportActionBar().hide();
+        System.out.println(profileViewModel.getAllProfiles().getClass());
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
