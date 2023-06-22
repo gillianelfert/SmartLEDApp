@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:text="Profile"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,5 +44,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/profiles_list_item"
         app:layout_constraintVertical_bias="0.764" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

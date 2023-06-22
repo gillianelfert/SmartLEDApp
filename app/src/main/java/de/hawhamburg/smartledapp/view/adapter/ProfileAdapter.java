@@ -3,6 +3,7 @@ package de.hawhamburg.smartledapp.view.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileHolder> {
 
     private List<Profile> profiles = new ArrayList<Profile>();
+    private OnItemClickListener listener;
     ProfileViewModel profileViewModel;
 
     @NonNull
@@ -36,7 +38,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
         holder.modeTextView.setText(currentProfile.getModeString());
         holder.profileRadioButton.setChecked(currentProfile.isStatus());
 
-        holder.modeTextView.setOnClickListener(v->{
+        holder.modeTextView.setOnClickListener(v -> {
         });
     }
 
@@ -45,16 +47,16 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
         return profiles.size();
     }
 
-    public void setProfiles(List<Profile> profiles){
+    public void setProfiles(List<Profile> profiles) {
         this.profiles = profiles;
         notifyDataSetChanged();
     }
 
-    public Profile getProfileAt(int position){
+    public Profile getProfileAt(int position) {
         return profiles.get(position);
     }
 
-    class ProfileHolder extends RecyclerView.ViewHolder{
+    class ProfileHolder extends RecyclerView.ViewHolder {
         private TextView profileNameTextView;
         private TextView modeTextView;
         private RadioButton profileRadioButton;
@@ -64,8 +66,24 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
             profileNameTextView = itemView.findViewById(R.id.profileNameTextView);
             modeTextView = itemView.findViewById(R.id.modeTextView);
             profileRadioButton = itemView.findViewById(R.id.profileRadioButton);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(profiles.get(position));
+                    }
+                }
+            });
         }
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(Profile profile);
 
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 }

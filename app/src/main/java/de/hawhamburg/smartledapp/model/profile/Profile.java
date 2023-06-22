@@ -72,4 +72,6 @@ public class Profile {
     public void setInactive(){
         this.status = false;
     }
+
+
 }
