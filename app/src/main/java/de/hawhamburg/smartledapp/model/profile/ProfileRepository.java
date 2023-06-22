@@ -38,6 +38,10 @@ public class ProfileRepository {
         return allProfiles;
     }
 
+    public void disableAllProfiles(){
+        //for (Profile profile:getAllProfiles().getValue())profile.
+    }
+
     private static class InsertProfileAsyncTask extends AsyncTask<Profile,Void,Void> {
         private ProfileDao profileDao;
 

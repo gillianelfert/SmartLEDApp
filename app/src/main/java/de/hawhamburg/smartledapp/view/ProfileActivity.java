@@ -32,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
+
         setContentView(R.layout.activity_profile);
 
         RecyclerView recyclerView = findViewById(R.id.profilesRecView);

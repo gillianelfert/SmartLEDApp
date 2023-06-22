@@ -15,12 +15,8 @@ public class Profile {
     private boolean lightIsOn;
     private int lightBrightness;
 
-    public Profile(String name, boolean reactsToClap, boolean status) {
-        this.name = name;
-        this.reactsToClap = reactsToClap;
-        this.status = status;
-        this.lightIsOn = false;
-        this.lightBrightness = 100;
+    public boolean isLightIsOn() {
+        return lightIsOn;
     }
 
     public void setId(int id) {
@@ -39,6 +35,14 @@ public class Profile {
         return reactsToClap;
     }
 
+    public Profile(String name, boolean reactsToClap, boolean status, boolean lightIsOn, int lightBrightness) {
+        this.name = name;
+        this.reactsToClap = reactsToClap;
+        this.status = status;
+        this.lightIsOn = lightIsOn;
+        this.lightBrightness = lightBrightness;
+    }
+
     public boolean isStatus() {
         return status;
     }
@@ -46,10 +50,6 @@ public class Profile {
     public String getModeString(){
         if(this.isReactsToClap()){return "Clap Mode";}
         else{return "Light Mode";}
-    }
-
-    public boolean isLightOn() {
-        return lightIsOn;
     }
 
     public int getLightBrightness() {

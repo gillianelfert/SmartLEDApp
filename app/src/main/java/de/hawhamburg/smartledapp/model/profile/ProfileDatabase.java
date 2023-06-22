@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Profile.class}, version = 1)
+@Database(entities = {Profile.class}, version = 5)
 public abstract class ProfileDatabase extends RoomDatabase {
 
     private static ProfileDatabase instance;
@@ -44,11 +44,11 @@ public abstract class ProfileDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-            profileDao.insert(new Profile("Standard", false, true));
-            profileDao.insert(new Profile("Gemütlich", false, false));
-            profileDao.insert(new Profile("Lesen", true, false));
-            profileDao.insert(new Profile("Essen", true, false));
-            profileDao.insert(new Profile("Schlafen", true, false));
+            profileDao.insert(new Profile("Standard", false, true,false,100));
+            profileDao.insert(new Profile("Gemütlich", false, false,false,100));
+            profileDao.insert(new Profile("Lesen", true, false,false,100));
+            profileDao.insert(new Profile("Essen", true, false,false,100));
+            profileDao.insert(new Profile("Schlafen", true, false,false,100));
             return null;
         }
     }
