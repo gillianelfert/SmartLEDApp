@@ -1,24 +1,13 @@
 package de.hawhamburg.smartledapp.model.light;
 
 public class Light {
-    private String name;
     private boolean isOn;
     private int brightness;
 
-    public Light(String name, boolean isOn, int brightness) {
-        this.name = name;
+    public Light(boolean isOn, int brightness) {
         this.isOn = isOn;
         this.brightness = brightness;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public boolean isOn() {
         return isOn;
     }

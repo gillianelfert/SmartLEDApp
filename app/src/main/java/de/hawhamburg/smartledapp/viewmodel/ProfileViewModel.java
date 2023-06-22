@@ -43,4 +43,6 @@ public class ProfileViewModel extends AndroidViewModel {
     public LiveData<List<Profile>> getAllProfiles(){
         return allProfiles;
     }
+
+
 }

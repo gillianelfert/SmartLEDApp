@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -39,7 +40,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         ProfileAdapter adapter = new ProfileAdapter();
         recyclerView.setAdapter(adapter);
-
 
 
         profileViewModel.getAllProfiles().observe(this, new Observer<List<Profile>>() {

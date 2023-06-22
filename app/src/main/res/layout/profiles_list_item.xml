@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_background"
-    android:layout_marginBottom="10dp"
+    android:background="@drawable/rounded_background_white"
+    android:layout_margin="5dp"
     android:paddingBottom="16dp"
-    android:paddingTop="15dp">
+    android:paddingTop="15dp"
+    android:elevation="5dp">
 
     <TextView
         android:id="@+id/profileNameTextView"
@@ -19,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.07" />
 
     <RadioButton
         android:id="@+id/profileRadioButton"
@@ -38,6 +39,11 @@
         android:layout_height="wrap_content"
         android:text="Mode"
         android:textSize="18dp"
+        android:background="@drawable/rounded_background_orange"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/profileNameTextView"
         app:layout_constraintHorizontal_bias="0.0"
