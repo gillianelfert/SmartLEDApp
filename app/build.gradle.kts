@@ -55,6 +55,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.hivemq:hivemq-mqtt-client:1.3.0")
+
+    testImplementation ("org.mockito:mockito-core:5.4.0")
+    androidTestImplementation("org.mockito:mockito-android:5.4.0")
 }
 
 dependencies {

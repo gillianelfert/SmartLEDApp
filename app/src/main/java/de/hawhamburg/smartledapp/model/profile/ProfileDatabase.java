@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Profile.class}, version = 1)
+@Database(entities = {Profile.class}, version = 2)
 public abstract class ProfileDatabase extends RoomDatabase {
 
     private static ProfileDatabase instance;
@@ -44,7 +44,7 @@ public abstract class ProfileDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-
+            System.out.println("NEUE DATENBANK ERSTELLT");
             return null;
         }
     }

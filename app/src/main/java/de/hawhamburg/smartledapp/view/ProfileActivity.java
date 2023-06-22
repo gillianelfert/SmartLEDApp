@@ -18,7 +18,6 @@ import java.util.List;
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.view.adapter.ProfileAdapter;
-import de.hawhamburg.smartledapp.viewmodel.AlarmViewModel;
 import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -30,6 +29,8 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+
         setContentView(R.layout.activity_profile);
 
         RecyclerView recyclerView = findViewById(R.id.profilesRecView);
@@ -39,8 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         ProfileAdapter adapter = new ProfileAdapter();
         recyclerView.setAdapter(adapter);
 
-        profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
-        profileViewModel.insert(new Profile("Jan",true,true));
+
 
         profileViewModel.getAllProfiles().observe(this, new Observer<List<Profile>>() {
             @Override

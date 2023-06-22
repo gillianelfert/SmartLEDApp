@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.profile.Profile;
 
@@ -31,7 +32,13 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
     public void onBindViewHolder(@NonNull ProfileHolder holder, int position) {
         Profile currentProfile = profiles.get(position);
         holder.profileNameTextView.setText(currentProfile.getName());
-        holder.profileRadioButton.setChecked(currentProfile.isStatus());
+        if(currentProfile.isReactsToClap()){
+            holder.modeTextView.setText("Clap Mode");
+        } else holder.modeTextView.setText("Brightness Mode");
+        if(currentProfile.isStatus()){
+            holder.profileRadioButton.toggle();
+        }
+
     }
 
     @Override
@@ -58,8 +65,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
             profileNameTextView = itemView.findViewById(R.id.profileNameTextView);
             modeTextView = itemView.findViewById(R.id.modeTextView);
             profileRadioButton = itemView.findViewById(R.id.profileRadioButton);
+
         }
     }
-
-
 }

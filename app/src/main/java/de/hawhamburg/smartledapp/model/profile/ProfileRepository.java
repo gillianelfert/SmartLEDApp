@@ -24,7 +24,6 @@ public class ProfileRepository {
 
     public void update(Profile profile){
         new UpdateProfileAsyncTask(profileDao).execute(profile);
-
     }
 
     public void delete(Profile profile){
