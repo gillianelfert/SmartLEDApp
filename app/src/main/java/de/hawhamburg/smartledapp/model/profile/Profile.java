@@ -52,12 +52,17 @@ public class Profile {
         else{return "Light Mode";}
     }
 
+    public boolean isLightOn() {
+        return lightIsOn;
+    }
+
     public int getLightBrightness() {
         return lightBrightness;
     }
 
     public void toggleMode(){
-        this.reactsToClap = !this.reactsToClap;
+        if(this.reactsToClap){reactsToClap = false;}
+        else {this.reactsToClap = true;}
     }
 
     public void setActive(){

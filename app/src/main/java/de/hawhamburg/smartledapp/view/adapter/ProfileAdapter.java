@@ -14,10 +14,12 @@ import java.util.List;
 
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.profile.Profile;
+import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileHolder> {
 
     private List<Profile> profiles = new ArrayList<Profile>();
+    ProfileViewModel profileViewModel;
 
     @NonNull
     @Override
@@ -34,18 +36,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
         holder.modeTextView.setText(currentProfile.getModeString());
         holder.profileRadioButton.setChecked(currentProfile.isStatus());
 
-        holder.modeTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentProfile.isReactsToClap();
-            }
-        });
-
-        holder.profileRadioButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
+        holder.modeTextView.setOnClickListener(v->{
         });
     }
 
