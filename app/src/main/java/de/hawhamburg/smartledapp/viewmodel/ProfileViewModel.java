@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -16,13 +17,15 @@ public class ProfileViewModel extends AndroidViewModel {
 
     private ProfileRepository profileRepository;
     private LiveData<List<Profile>> allProfiles;
-
+    private RecyclerView profilesRecView;
 
     public ProfileViewModel(@NonNull Application application) {
         super(application);
         profileRepository = new ProfileRepository(application);
         allProfiles = profileRepository.getAllProfiles();
     }
+
+
 
     public void insert(Profile profile){
         profileRepository.insert(profile);

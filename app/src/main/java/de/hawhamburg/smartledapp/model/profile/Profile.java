@@ -48,7 +48,15 @@ public class Profile {
         else{return "Light Mode";}
     }
 
-    public boolean isLightOn() {
+    public void setLightIsOn(boolean lightIsOn) {
+        this.lightIsOn = lightIsOn;
+    }
+
+    public void setLightBrightness(int lightBrightness) {
+        this.lightBrightness = lightBrightness;
+    }
+
+    public boolean getLightIsOn() {
         return lightIsOn;
     }
 
@@ -57,7 +65,8 @@ public class Profile {
     }
 
     public void toggleMode(){
-        this.reactsToClap = !this.reactsToClap;
+        if(this.reactsToClap){reactsToClap = false;}
+        else {this.reactsToClap = true;}
     }
 
     public void setActive(){

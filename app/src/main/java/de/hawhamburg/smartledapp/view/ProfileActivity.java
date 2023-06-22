@@ -24,6 +24,7 @@ import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 public class ProfileActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     private ProfileViewModel profileViewModel;
+    private RecyclerView profilesRecView;
 
 
     @Override
@@ -34,12 +35,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_profile);
 
-        RecyclerView recyclerView = findViewById(R.id.profilesRecView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
+        profilesRecView = findViewById(R.id.profilesRecView);
+        profilesRecView.setLayoutManager(new LinearLayoutManager(this));
+        profilesRecView.setHasFixedSize(true);
 
         ProfileAdapter adapter = new ProfileAdapter();
-        recyclerView.setAdapter(adapter);
+        profilesRecView.setAdapter(adapter);
 
 
         profileViewModel.getAllProfiles().observe(this, new Observer<List<Profile>>() {
@@ -48,7 +49,6 @@ public class ProfileActivity extends AppCompatActivity {
                 adapter.setProfiles(profiles);
             }
         });
-
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
