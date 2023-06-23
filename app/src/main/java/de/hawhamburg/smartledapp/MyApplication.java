@@ -2,6 +2,10 @@ package de.hawhamburg.smartledapp;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+
+import java.util.List;
+
 import de.hawhamburg.smartledapp.model.profile.Profile;
 
 public class MyApplication extends Application {

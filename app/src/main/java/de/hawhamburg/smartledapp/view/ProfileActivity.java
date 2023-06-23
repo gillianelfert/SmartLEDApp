@@ -20,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.view.adapter.ProfileAdapter;
@@ -33,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     private ProfileViewModel profileViewModel;
     private RecyclerView profilesRecView;
+    private MyApplication myApplication;
 
 
     @Override
@@ -56,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
         profilesRecView.setLayoutManager(new LinearLayoutManager(this));
         profilesRecView.setHasFixedSize(true);
 
-        ProfileAdapter adapter = new ProfileAdapter(profileViewModel);
+        ProfileAdapter adapter = new ProfileAdapter(profileViewModel, myApplication);
         profilesRecView.setAdapter(adapter);
 
 

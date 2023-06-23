@@ -1,5 +1,6 @@
 package de.hawhamburg.smartledapp.view.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
+import de.hawhamburg.smartledapp.MyApplication;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileHolder> {
 
@@ -22,8 +25,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
 
     private ProfileViewModel profileViewModel;
     private OnItemClickListener listener;
+    private MyApplication myApplication;
 
-    public ProfileAdapter(ProfileViewModel profileViewModel) {
+    public ProfileAdapter(ProfileViewModel profileViewModel, MyApplication myApplication) {
         this.profileViewModel = profileViewModel;
     }
 
@@ -37,8 +41,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
 
     @Override
     public void onBindViewHolder(@NonNull ProfileHolder holder, int position) {
-        Profile currentProfile = profiles.get(position);
 
+
+        Profile currentProfile = profiles.get(position);
         holder.profileNameTextView.setText(currentProfile.getName());
 
         holder.modeTextView.setText(currentProfile.getModeString());

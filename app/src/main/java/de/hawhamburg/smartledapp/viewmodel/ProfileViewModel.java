@@ -17,7 +17,6 @@ public class ProfileViewModel extends AndroidViewModel {
 
     private ProfileRepository profileRepository;
     private LiveData<List<Profile>> allProfiles;
-    private RecyclerView profilesRecView;
 
     public ProfileViewModel(@NonNull Application application) {
         super(application);
