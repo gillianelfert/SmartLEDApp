@@ -39,6 +39,10 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
 
         alarmViewModel = new ViewModelProvider(this).get(AlarmViewModel.class);
 
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.alarm);
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView);
+
         mTextView = findViewById(R.id.no_alarm_textview);
 
         Button timePickerButton = findViewById(R.id.timepicker_button);
@@ -55,26 +59,6 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
             @Override
             public void onClick(View view) {
                 cancelAlarm();
-            }
-        });
-
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.alarm);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.profile){
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                }
-                if(item.getItemId() == R.id.light){
-                    startActivity(new Intent(getApplicationContext(), LightActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                }
-                return false;
             }
         });
     }
