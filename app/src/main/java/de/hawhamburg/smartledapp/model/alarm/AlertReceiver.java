@@ -23,7 +23,5 @@ public class AlertReceiver extends BroadcastReceiver {
         notificationHelper.getManager().notify(1,nb.build());
 
         myApplication = (MyApplication) context.getApplicationContext();
-
-        myApplication.setProfileActive();
     }
 }

@@ -127,7 +127,7 @@ public class ProfileActivity extends AppCompatActivity {
             String name = data.getStringExtra(AddEditProfileActivity.EXTRA_NAME);
             boolean clapMode = data.getBooleanExtra(AddEditProfileActivity.EXTRA_CLAP_MODE,true);
 
-            Profile profile = new Profile(name,clapMode,false,false,100);
+            Profile profile = new Profile(name,clapMode,profileViewModel.getProfileWithID(id).isStatus(),false,100);
             profile.setId(id);
             profileViewModel.update(profile);
             Toast.makeText(this, "Profile updated.", Toast.LENGTH_SHORT).show();
