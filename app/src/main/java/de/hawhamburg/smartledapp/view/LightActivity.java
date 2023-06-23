@@ -31,23 +31,7 @@ public class LightActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.light);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.profile){
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                }
-                if(item.getItemId() == R.id.alarm){
-                    startActivity(new Intent(getApplicationContext(), AlarmActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                }
-                return false;
-            }
-        });
+        BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView);
     }
 
     private void connectToMQTT() {

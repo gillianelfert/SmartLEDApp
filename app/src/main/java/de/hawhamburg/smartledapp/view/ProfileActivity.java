@@ -71,24 +71,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
+        BottomNavigationHelper.setupBottomNavigation(this,bottomNavigationView);
 
         getSupportActionBar().hide();
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.light){
-                    startActivity(new Intent(getApplicationContext(), LightActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                }
-                if(item.getItemId() == R.id.alarm){
-                    startActivity(new Intent(getApplicationContext(), AlarmActivity.class));
-                    overridePendingTransition(0,0);
-                    return true;
-                }
-                return false;
-            }
-        });
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT) {
