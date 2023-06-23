@@ -100,7 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 profileViewModel.delete(adapter.getProfileAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(ProfileActivity.this, "Note deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, "Profile deleted", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(profilesRecView);
 

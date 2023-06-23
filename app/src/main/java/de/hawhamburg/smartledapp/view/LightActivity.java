@@ -17,7 +17,7 @@ import de.hawhamburg.smartledapp.viewmodel.LightViewModel;
 public class LightActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
-    CalculationClass calculationClass = new CalculationClass();
+    CalculationClass calculationClass = new CalculationClass(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class LightActivity extends AppCompatActivity {
 
     private void connectToMQTT() {
         try {
-            calculationClass.mqttConnect();
+            calculationClass.connectToMQTT();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
