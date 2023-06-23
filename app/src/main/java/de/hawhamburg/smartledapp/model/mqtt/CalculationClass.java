@@ -16,16 +16,13 @@ public class CalculationClass {
 
     private MyApplication myApplication;
     private Context context;
-    private Profile activeProfile;
-
 
     public CalculationClass(Context context) {
         this.context = context;
     }
 
-    public void SetUpUnit(){
+    public void setUpUnit(){
         myApplication = (MyApplication) context.getApplicationContext();
-        activeProfile = myApplication.getActiveProfile();
 
         try {
             connectToMQTT();
@@ -60,15 +57,15 @@ public class CalculationClass {
     }
 
     public void calculationUnit(String message){
-        if (activeProfile.isReactsToClap()){
-            mqttClient.publish(VALUE,String.valueOf(activeProfile.getLightBrightness()));
+        if (myApplication.getActiveProfile().isReactsToClap()){
+            mqttClient.publish(VALUE,String.valueOf(myApplication.getActiveProfile().getLightBrightness()));
         }else {
-            mqttClient.publish(VALUE, String.valueOf(activeProfile.getLightBrightness()));
+            mqttClient.publish(VALUE, String.valueOf(myApplication.getActiveProfile().getLightBrightness()));
         }
     }
 
     public void updateMode(){
-        if (activeProfile.isReactsToClap()){
+        if (myApplication.getActiveProfile().isReactsToClap()){
             mqttClient.publish(MODE, "a");
         }else {
             mqttClient.publish(MODE, "l");

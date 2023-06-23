@@ -29,11 +29,11 @@
             android:name=".view.AlarmActivity"
             android:exported="false" />
         <activity
-            android:name=".view.ProfileActivity"
+            android:name=".view.LightActivity"
             android:launchMode="singleTop"
             android:exported="false" />
         <activity
-            android:name=".view.LightActivity"
+            android:name=".view.ProfileActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

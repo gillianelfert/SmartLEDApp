@@ -22,6 +22,7 @@ import java.util.List;
 
 import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
+import de.hawhamburg.smartledapp.model.mqtt.CalculationClass;
 import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.view.adapter.ProfileAdapter;
 import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
@@ -29,12 +30,13 @@ import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 public class ProfileActivity extends AppCompatActivity {
 
     public static final int ADD_PROFILE_REQUEST = 1;
-
     public static final int EDIT_PROFILE_REQUEST = 2;
     BottomNavigationView bottomNavigationView;
-    private ProfileViewModel profileViewModel;
+    public ProfileViewModel profileViewModel;
     private RecyclerView profilesRecView;
     private MyApplication myApplication;
+    CalculationClass calculationClass = new CalculationClass(this);
+
 
 
     @Override
@@ -42,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+
 
         setContentView(R.layout.activity_profile);
 
@@ -68,6 +71,8 @@ public class ProfileActivity extends AppCompatActivity {
                 adapter.setProfiles(profiles);
             }
         });
+
+        setUpMQTT();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
@@ -131,5 +136,9 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(this, "Profile not saved.", Toast.LENGTH_SHORT).show();
         }
     }
+    private void setUpMQTT() {
+        calculationClass.setUpUnit();
+    }
+
 
 }

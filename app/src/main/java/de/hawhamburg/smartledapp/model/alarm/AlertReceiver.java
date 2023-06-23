@@ -14,16 +14,15 @@ import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 
 public class AlertReceiver extends BroadcastReceiver {
 
-    ProfileViewModel profileViewModel;
+    MyApplication myApplication;
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationHelper notificationHelper = new NotificationHelper(context);
         NotificationCompat.Builder nb = notificationHelper.getChannelNotification();
         notificationHelper.getManager().notify(1,nb.build());
 
-        MyApplication myApp = new MyApplication();
-        Profile profile = myApp.getActiveProfile();
-        profile.setActive();
-        myApp.setActiveProfile(profile);
+        myApplication = (MyApplication) context.getApplicationContext();
+
+        myApplication.setProfileActive();
     }
 }
