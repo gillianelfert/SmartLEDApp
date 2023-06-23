@@ -18,6 +18,7 @@
         app:menu="@menu/menu_navigation"
         tools:layout_editor_absoluteX="0dp" />
 
+
     <TextView
         android:id="@+id/no_alarm_textview"
         android:layout_width="wrap_content"

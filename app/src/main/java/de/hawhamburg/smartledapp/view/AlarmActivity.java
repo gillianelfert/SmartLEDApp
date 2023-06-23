@@ -98,4 +98,6 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
         alarmManager.cancel(pendingIntent);
         mTextView.setText("Wecker abgebrochen");
     }
+
+
 }
