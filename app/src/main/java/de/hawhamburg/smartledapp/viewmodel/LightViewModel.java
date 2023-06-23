@@ -25,6 +25,8 @@ public class LightViewModel extends AndroidViewModel {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 myApplication.getProfileRepository().getActiveProfile().setLightBrightness(progress);
+                myApplication.getProfileRepository().update(myApplication.getProfileRepository().getActiveProfile());
+                seekBar.setProgress(progress);
             }
 
             @Override

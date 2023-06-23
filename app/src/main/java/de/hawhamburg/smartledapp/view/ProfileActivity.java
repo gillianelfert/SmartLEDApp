@@ -143,7 +143,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        calculationClass.disconnectFromBroker();
+        //calculationClass.disconnectFromBroker();
         super.onDestroy();
     }
 }

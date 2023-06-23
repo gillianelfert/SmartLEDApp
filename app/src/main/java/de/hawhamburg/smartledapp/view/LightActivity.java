@@ -1,12 +1,11 @@
 package de.hawhamburg.smartledapp.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,6 +21,7 @@ public class LightActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private CalculationClass calculationClass = new CalculationClass(this);
     private SeekBar brightnessSeekBar;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
