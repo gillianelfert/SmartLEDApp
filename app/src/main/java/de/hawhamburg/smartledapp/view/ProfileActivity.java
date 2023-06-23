@@ -17,11 +17,13 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.mqtt.CalculationClass;
+import de.hawhamburg.smartledapp.model.mqtt.MqttClient;
 import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.view.adapter.ProfileAdapter;
 import de.hawhamburg.smartledapp.viewmodel.BottomNavigationHelper;
@@ -36,7 +38,6 @@ public class ProfileActivity extends AppCompatActivity {
     private RecyclerView profilesRecView;
     private MyApplication myApplication;
     CalculationClass calculationClass = new CalculationClass(this);
-
 
 
     @Override
@@ -72,7 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        setUpMQTT();
+        //setUpMQTT();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
@@ -140,5 +141,9 @@ public class ProfileActivity extends AppCompatActivity {
         calculationClass.setUpUnit();
     }
 
-
+    @Override
+    protected void onDestroy() {
+        calculationClass.disconnectFromBroker();
+        super.onDestroy();
+    }
 }
