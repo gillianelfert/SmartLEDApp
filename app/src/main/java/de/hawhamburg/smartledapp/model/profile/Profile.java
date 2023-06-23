@@ -60,6 +60,10 @@ public class Profile {
         return lightBrightness;
     }
 
+    public void setLightBrightness(int lightBrightness) {
+        this.lightBrightness = lightBrightness;
+    }
+
     public void toggleMode(){
         if(this.reactsToClap){reactsToClap = false;}
         else {this.reactsToClap = true;}
