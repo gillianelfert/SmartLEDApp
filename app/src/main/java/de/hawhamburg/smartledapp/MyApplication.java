@@ -40,8 +40,10 @@ public class MyApplication extends Application {
         if (profiles != null){
             for (Profile p : profiles){
                 p.setInactive();
+                profileRepository.update(p);
             }
             activeProfile.setActive();
+            profileRepository.update(activeProfile);
         }
     }
 }
