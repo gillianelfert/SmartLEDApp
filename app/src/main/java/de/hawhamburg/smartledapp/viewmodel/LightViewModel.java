@@ -12,8 +12,11 @@ import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.model.profile.ProfileRepository;
 
 public class LightViewModel extends AndroidViewModel {
-    MyApplication myApplication;
     public LightViewModel(@NonNull Application application) {
         super(application);
+    }
+
+    public void setupBrightnessSeekBar(SeekBar seekBar){
+
     }
 }

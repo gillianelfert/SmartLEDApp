@@ -11,45 +11,28 @@ import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.model.profile.ProfileRepository;
 
 public class MyApplication extends Application {
-    private static MyApplication sInstance;
     private LiveData<List<Profile>> allProfiles;
     private ProfileRepository profileRepository;
+    private static MyApplication instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        sInstance = this;
-        initializeProfileRepository();
+        profileRepository = new ProfileRepository((MyApplication) this);
     }
 
-    public MyApplication() {
-    }
-
-    public MyApplication(ProfileRepository profileRepository) {
-        this.profileRepository = profileRepository;
-    }
-
-    public static MyApplication getInstance() {
-        return sInstance;
+    public static synchronized MyApplication getInstance() {
+        return instance;
     }
 
     public Profile getActiveProfile() {
-        Profile activeProfile;
-        List<Profile> profiles = allProfiles.getValue();
-        if (profiles == null){
-            profiles = new ArrayList<>();
-            profiles.add(new Profile("Standard", false, true, false, 100));
-            return profiles.get(0);
+        List<Profile> profiles = profileRepository.getAllProfiles().getValue();
+        for (Profile profile : profiles){
+            if (profile.isStatus()){return profile;}
         }
-        for (Profile p : profiles){
-            if (p.isStatus()){
-                activeProfile = p;
-                    return activeProfile;
-            }
-        }
-        activeProfile = profiles.get(0);
-        activeProfile.setActive();
-        return activeProfile;
+        Profile newProfile = new Profile("Standard", false, true, false, 100);
+        profileRepository.insert(newProfile);
+        return newProfile;
     }
 
     public void setActiveProfile(Profile activeProfile) {
@@ -57,15 +40,10 @@ public class MyApplication extends Application {
         if (profiles != null){
             for (Profile p : profiles){
                 p.setInactive();
+                profileRepository.update(p);
             }
             activeProfile.setActive();
+            profileRepository.update(activeProfile);
         }
-    }
-
-    public void initializeProfileRepository() {
-        if (profileRepository == null) {
-            profileRepository = new ProfileRepository(this);
-        }
-        allProfiles = profileRepository.getAllProfiles();
     }
 }
