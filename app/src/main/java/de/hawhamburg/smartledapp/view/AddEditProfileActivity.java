@@ -13,9 +13,9 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import de.hawhamburg.smartledapp.R;
+import de.hawhamburg.smartledapp.viewmodel.AlarmViewModel;
 
 public class AddEditProfileActivity extends AppCompatActivity {
-
     public static final String EXTRA_ID =
             "de.hawhamburg.smartledapp.view.EXTRA_ID";
     public static final String EXTRA_NAME =

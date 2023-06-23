@@ -3,7 +3,6 @@ package de.hawhamburg.smartledapp.view.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -19,9 +18,14 @@ import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileHolder> {
 
-    private List<Profile> profiles = new ArrayList<Profile>();
+    private List<Profile> profiles = new ArrayList<>();
+
+    private ProfileViewModel profileViewModel;
     private OnItemClickListener listener;
-    ProfileViewModel profileViewModel;
+
+    public ProfileAdapter(ProfileViewModel profileViewModel) {
+        this.profileViewModel = profileViewModel;
+    }
 
     @NonNull
     @Override
@@ -34,11 +38,26 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
     @Override
     public void onBindViewHolder(@NonNull ProfileHolder holder, int position) {
         Profile currentProfile = profiles.get(position);
-        holder.profileNameTextView.setText(currentProfile.getName());
-        holder.modeTextView.setText(currentProfile.getModeString());
-        holder.profileRadioButton.setChecked(currentProfile.isStatus());
 
+        holder.profileNameTextView.setText(currentProfile.getName());
+
+        holder.modeTextView.setText(currentProfile.getModeString());
         holder.modeTextView.setOnClickListener(v -> {
+            currentProfile.toggleMode();
+            profileViewModel.update(currentProfile);
+        });
+
+        holder.profileRadioButton.setChecked(currentProfile.isStatus());
+        holder.profileRadioButton.setOnClickListener(v->{
+            for(Profile p : profiles){
+                if (p == currentProfile){
+                    p.setActive();
+                }
+                else{
+                    p.setInactive();
+                }
+                profileViewModel.update(p);
+            }
         });
     }
 

@@ -24,15 +24,20 @@ import java.util.Calendar;
 
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.alarm.AlertReceiver;
+import de.hawhamburg.smartledapp.viewmodel.AlarmViewModel;
 
 public class AlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+    AlarmViewModel alarmViewModel;
     BottomNavigationView bottomNavigationView;
     private TextView mTextView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
+
+        getSupportActionBar().hide();
+
+        alarmViewModel = new ViewModelProvider(this).get(AlarmViewModel.class);
 
         mTextView = findViewById(R.id.no_alarm_textview);
 
@@ -52,10 +57,6 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
                 cancelAlarm();
             }
         });
-
-
-
-        getSupportActionBar().hide();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.alarm);
@@ -91,7 +92,7 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
     }
 
     private void updateTimeText(Calendar c){
-        String timeText = "Alarm set for: ";
+        String timeText = "Wecker gestellt für: ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
 
         mTextView.setText(timeText);
@@ -111,6 +112,6 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_IMMUTABLE);
 
         alarmManager.cancel(pendingIntent);
-        mTextView.setText("Alarm cancelled");
+        mTextView.setText("Wecker abgebrochen");
     }
 }

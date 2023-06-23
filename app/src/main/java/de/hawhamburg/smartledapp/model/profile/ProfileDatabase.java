@@ -44,11 +44,6 @@ public abstract class ProfileDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-            profileDao.insert(new Profile("Standard", false, true,false,100));
-            profileDao.insert(new Profile("Gemütlich", false, false,false,100));
-            profileDao.insert(new Profile("Lesen", true, false,false,100));
-            profileDao.insert(new Profile("Essen", true, false,false,100));
-            profileDao.insert(new Profile("Schlafen", true, false,false,100));
             return null;
         }
     }

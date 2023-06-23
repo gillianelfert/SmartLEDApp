@@ -56,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
         profilesRecView.setLayoutManager(new LinearLayoutManager(this));
         profilesRecView.setHasFixedSize(true);
 
-        ProfileAdapter adapter = new ProfileAdapter();
+        ProfileAdapter adapter = new ProfileAdapter(profileViewModel);
         profilesRecView.setAdapter(adapter);
 
 
