@@ -29,13 +29,10 @@ import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 public class ProfileActivity extends AppCompatActivity {
 
     public static final int ADD_PROFILE_REQUEST = 1;
-
     public static final int EDIT_PROFILE_REQUEST = 2;
     BottomNavigationView bottomNavigationView;
     private ProfileViewModel profileViewModel;
     private RecyclerView profilesRecView;
-    private MyApplication myApplication;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         profilesRecView.setLayoutManager(new LinearLayoutManager(this));
         profilesRecView.setHasFixedSize(true);
 
-        ProfileAdapter adapter = new ProfileAdapter(profileViewModel, myApplication);
+        ProfileAdapter adapter = new ProfileAdapter(profileViewModel, MyApplication.getInstance());
         profilesRecView.setAdapter(adapter);
 
 
