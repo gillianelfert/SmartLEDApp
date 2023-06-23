@@ -1,4 +1,4 @@
-package de.hawhamburg.smartledapp.view;
+package de.hawhamburg.smartledapp.viewmodel;
 
 
 import android.app.Activity;
@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import de.hawhamburg.smartledapp.R;
+import de.hawhamburg.smartledapp.view.AlarmActivity;
+import de.hawhamburg.smartledapp.view.LightActivity;
+import de.hawhamburg.smartledapp.view.ProfileActivity;
 
 public class BottomNavigationHelper {
     public static void setupBottomNavigation(final Activity activity, BottomNavigationView bottomNavigationView) {

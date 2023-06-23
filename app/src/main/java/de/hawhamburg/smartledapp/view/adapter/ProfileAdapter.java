@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 import de.hawhamburg.smartledapp.R;
@@ -41,8 +42,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
 
     @Override
     public void onBindViewHolder(@NonNull ProfileHolder holder, int position) {
-
-
         Profile currentProfile = profiles.get(position);
         holder.profileNameTextView.setText(currentProfile.getName());
 
