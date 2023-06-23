@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,6 +23,7 @@ import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.view.adapter.ProfileAdapter;
+import de.hawhamburg.smartledapp.viewmodel.BottomNavigationHelper;
 import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 
 public class ProfileActivity extends AppCompatActivity {

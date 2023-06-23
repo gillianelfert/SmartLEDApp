@@ -1,13 +1,9 @@
 package de.hawhamburg.smartledapp.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.SeekBar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,8 +11,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.mqtt.CalculationClass;
+import de.hawhamburg.smartledapp.viewmodel.BottomNavigationHelper;
 import de.hawhamburg.smartledapp.viewmodel.LightViewModel;
-import de.hawhamburg.smartledapp.viewmodel.ProfileViewModel;
 
 public class LightActivity extends AppCompatActivity {
     private LightViewModel lightViewModel;
@@ -37,7 +33,7 @@ public class LightActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         brightnessSeekBar = findViewById(R.id.brightnessSeekBar);
-        lightViewModel.setupBrightnessSeekbar(brightnessSeekBar, myApplication);
+        lightViewModel.setupBrightnessSeekbar(brightnessSeekBar);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.light);

@@ -9,30 +9,32 @@ import androidx.lifecycle.AndroidViewModel;
 
 import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.model.profile.Profile;
+import de.hawhamburg.smartledapp.model.profile.ProfileRepository;
 
 public class LightViewModel extends AndroidViewModel {
     MyApplication myApplication;
     public LightViewModel(@NonNull Application application) {
         super(application);
+        myApplication = (MyApplication) application;
+        myApplication.initializeProfileRepository();
     }
 
-    public void setupBrightnessSeekbar(SeekBar seekBar, MyApplication myApplication){
-        //seekBar.setProgress(myApplication.getActiveProfile().getLightBrightness());
+    public void setupBrightnessSeekbar(SeekBar seekBar){
+        seekBar.setProgress(myApplication.getActiveProfile().getLightBrightness());
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+                Profile profile = myApplication.getActiveProfile();
+                profile.setLightBrightness(progress);
+                myApplication.setActiveProfile(profile);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
     }
+
 }
