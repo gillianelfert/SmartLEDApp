@@ -13,7 +13,6 @@ public class MyApplication extends Application {
     private static MyApplication sInstance;
     private LiveData<List<Profile>> allProfiles;
     private ProfileRepository profileRepository;
-    private Profile activeProfile;
 
     @Override
     public void onCreate() {
@@ -23,7 +22,21 @@ public class MyApplication extends Application {
     }
 
     public Profile getActiveProfile() {
-        return activeProfile;
+        Profile activeProfile;
+        List<Profile> profiles = allProfiles.getValue();
+        if (profiles != null){
+            for (Profile p : profiles){
+                if (p.isStatus()){
+                    activeProfile = p;
+                    return activeProfile;
+                }
+            }
+            activeProfile = profiles.get(0);
+            activeProfile.setActive();
+            return activeProfile;
+        }
+        profiles.add(new Profile("Standard", false, true, false, 100));
+        return profiles.get(0);
     }
 
     public void setActiveProfile(Profile activeProfile) {
