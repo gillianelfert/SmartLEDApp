@@ -3,6 +3,7 @@ package de.hawhamburg.smartledapp;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,39 +12,34 @@ import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.model.profile.ProfileRepository;
 
 public class MyApplication extends Application {
-    private LiveData<List<Profile>> allProfiles;
     private ProfileRepository profileRepository;
-    private static MyApplication instance;
+    private MutableLiveData<List<Profile>> profileLiveData;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        profileRepository = new ProfileRepository((MyApplication) this);
+        profileRepository = new ProfileRepository(this);
+        profileLiveData = new MutableLiveData<>();
+
+        LiveData<List<Profile>> allProfilesLiveData = profileRepository.getAllProfiles();
+        allProfilesLiveData.observeForever(profiles -> {
+            profileLiveData.setValue(profiles);
+        });
     }
 
-    public static synchronized MyApplication getInstance() {
-        return instance;
+    public ProfileRepository getProfileRepository() {
+        return profileRepository;
     }
 
-    public Profile getActiveProfile() {
-        List<Profile> profiles = profileRepository.getAllProfiles().getValue();
-        for (Profile profile : profiles){
-            if (profile.isStatus()){return profile;}
-        }
-        Profile newProfile = new Profile("Standard", false, true, false, 100);
-        profileRepository.insert(newProfile);
-        return newProfile;
+    public void setProfileRepository(ProfileRepository profileRepository) {
+        this.profileRepository = profileRepository;
     }
 
-    public void setActiveProfile(Profile activeProfile) {
-        List<Profile> profiles = allProfiles.getValue();
-        if (profiles != null){
-            for (Profile p : profiles){
-                p.setInactive();
-                profileRepository.update(p);
-            }
-            activeProfile.setActive();
-            profileRepository.update(activeProfile);
-        }
+    public MutableLiveData<List<Profile>> getProfileLiveData() {
+        return profileLiveData;
+    }
+
+    public void setProfileLiveData(MutableLiveData<List<Profile>> profileLiveData) {
+        this.profileLiveData = profileLiveData;
     }
 }

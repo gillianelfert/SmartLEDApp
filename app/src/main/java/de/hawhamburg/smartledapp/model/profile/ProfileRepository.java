@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Transformations;
 
 import java.util.List;
 
@@ -38,8 +39,32 @@ public class ProfileRepository {
         return allProfiles;
     }
 
-    public void disableAllProfiles(){
-        //for (Profile profile:getAllProfiles().getValue())profile.
+    public void deactivateAllProfiles(){
+        List<Profile> profiles = allProfiles.getValue();
+        if (profiles != null) {
+            for (Profile profile : profiles) {
+                profile.setInactive();
+                update(profile);
+            }
+        }
+    }
+
+    public void setActiveProfile(Profile activeProfile) {
+        deactivateAllProfiles();
+        activeProfile.setActive();
+        update(activeProfile);
+    }
+
+    public Profile getActiveProfile() {
+        List<Profile> profiles = allProfiles.getValue();
+        if (profiles != null) {
+            for (Profile profile : profiles) {
+                if (profile.isStatus()) {
+                    return profile;
+                }
+            }
+        }
+        return null;
     }
 
     private static class InsertProfileAsyncTask extends AsyncTask<Profile,Void,Void> {

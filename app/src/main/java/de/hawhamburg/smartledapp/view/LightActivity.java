@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.mqtt.CalculationClass;
+import de.hawhamburg.smartledapp.viewmodel.BottomNavigationHelper;
 import de.hawhamburg.smartledapp.viewmodel.LightViewModel;
 
 public class LightActivity extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class LightActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myApplication = MyApplication.getInstance();
+        myApplication = (MyApplication) this.getApplication();
         lightViewModel = new ViewModelProvider(this).get(LightViewModel.class);
 
         //connectToMQTT();
@@ -39,7 +40,7 @@ public class LightActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.light);
-
+        BottomNavigationHelper.setupBottomNavigation(this,bottomNavigationView);
 
     }
 

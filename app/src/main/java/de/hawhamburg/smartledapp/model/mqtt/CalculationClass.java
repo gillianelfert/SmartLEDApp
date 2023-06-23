@@ -57,15 +57,15 @@ public class CalculationClass {
     }
 
     public void calculationUnit(String message){
-        if (myApplication.getActiveProfile().isReactsToClap()){
-            mqttClient.publish(VALUE,String.valueOf(myApplication.getActiveProfile().getLightBrightness()));
+        if (myApplication.getProfileRepository().getActiveProfile().isReactsToClap()){
+            mqttClient.publish(VALUE,String.valueOf(myApplication.getProfileRepository().getActiveProfile().getLightBrightness()));
         }else {
-            mqttClient.publish(VALUE, String.valueOf(myApplication.getActiveProfile().getLightBrightness()));
+            mqttClient.publish(VALUE, String.valueOf(myApplication.getProfileRepository().getActiveProfile().getLightBrightness()));
         }
     }
 
     public void updateMode(){
-        if (myApplication.getActiveProfile().isReactsToClap()){
+        if (myApplication.getProfileRepository().getActiveProfile().isReactsToClap()){
             mqttClient.publish(MODE, "a");
         }else {
             mqttClient.publish(MODE, "l");
