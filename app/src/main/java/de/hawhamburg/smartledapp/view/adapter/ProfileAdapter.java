@@ -42,7 +42,6 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
 
     @Override
     public void onBindViewHolder(@NonNull ProfileHolder holder, int position) {
-        Collections.reverse(profiles);
         Profile currentProfile = profiles.get(position);
         holder.profileNameTextView.setText(currentProfile.getName());
 

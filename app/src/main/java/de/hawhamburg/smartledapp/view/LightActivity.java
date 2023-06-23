@@ -33,7 +33,6 @@ public class LightActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         brightnessSeekBar = findViewById(R.id.brightnessSeekBar);
-        lightViewModel.setupBrightnessSeekbar(brightnessSeekBar);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.light);
