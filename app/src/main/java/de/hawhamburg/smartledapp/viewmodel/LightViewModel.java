@@ -22,6 +22,7 @@ import java.util.Calendar;
 
 import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
+import de.hawhamburg.smartledapp.model.profile.Profile;
 
 public class LightViewModel extends AndroidViewModel {
     MyApplication myApplication;
@@ -43,7 +44,8 @@ public class LightViewModel extends AndroidViewModel {
     }
 
     public void setupBrightnessSeekBar(SeekBar seekBar, ImageView imageView){
-        seekBar.setProgress(myApplication.getProfileRepository().getActiveProfile().getLightBrightness());
+        Profile activeProfile = myApplication.getProfileRepository().getActiveProfile();
+        seekBar.setProgress(activeProfile.getLightBrightness());
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -67,7 +69,8 @@ public class LightViewModel extends AndroidViewModel {
     }
 
     public void setupLightImageView(ImageView imageView) {
-        int brightness = myApplication.getProfileRepository().getActiveProfile().getLightBrightness();
+        Profile activeProfile = myApplication.getProfileRepository().getActiveProfile();
+        int brightness = activeProfile.getLightBrightness();
         int[] brightnessColors = myApplication.getResources().getIntArray(R.array.brightnessColors);
 
         int colorIndex;

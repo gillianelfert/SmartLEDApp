@@ -48,11 +48,15 @@ public class ProfileViewModel extends AndroidViewModel {
     }
 
     public Profile getProfileWithID(int id){
-        for (Profile profile:allProfiles.getValue()){
-            if(profile.getId() == id)return profile;
+        List<Profile> profiles = allProfiles.getValue();
+        if (profiles != null) {
+            for (Profile profile : profiles) {
+                if (profile.getId() == id) return profile;
+            }
         }
-        return new Profile("Blueprint",true,true,true,100);
+        return new Profile("Blueprint", true, true, true, 100);
     }
+
 
 
 }

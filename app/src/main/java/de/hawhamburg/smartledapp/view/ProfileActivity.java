@@ -47,6 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
+
         mqttClient = new MqttClient();
         mqttClient.connectToBroker("my-mqtt-client-id", "broker.hivemq.com", 1883, "my-user", "my-password");
 
@@ -65,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
         profilesRecView.setLayoutManager(new LinearLayoutManager(this));
         profilesRecView.setHasFixedSize(true);
 
-        ProfileAdapter adapter = new ProfileAdapter(profileViewModel, myApplication);
+        ProfileAdapter adapter = new ProfileAdapter(profileViewModel, this);
         profilesRecView.setAdapter(adapter);
 
 

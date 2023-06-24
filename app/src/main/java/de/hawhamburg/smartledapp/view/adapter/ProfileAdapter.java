@@ -26,9 +26,11 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
 
     private ProfileViewModel profileViewModel;
     private OnItemClickListener listener;
+    private MyApplication myApplication;
 
-    public ProfileAdapter(ProfileViewModel profileViewModel, MyApplication myApplication) {
+    public ProfileAdapter(ProfileViewModel profileViewModel, Context context) {
         this.profileViewModel = profileViewModel;
+        this.myApplication = (MyApplication) context.getApplicationContext();
     }
 
     @NonNull
