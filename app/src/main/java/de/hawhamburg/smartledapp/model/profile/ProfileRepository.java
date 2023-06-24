@@ -55,7 +55,7 @@ public class ProfileRepository {
         update(activeProfile);
     }
 
-    public Profile getActiveProfile() {
+    public synchronized Profile getActiveProfile()  {
         List<Profile> profiles = allProfiles.getValue();
         if (profiles != null) {
             for (Profile profile : profiles) {
@@ -71,8 +71,11 @@ public class ProfileRepository {
             }
         }
 
+        System.out.println("INSERRRRT");
+
         Profile newProfile = new Profile("Standard", false, true, true, 100);
         insert(newProfile);
+
         return newProfile;
     }
 

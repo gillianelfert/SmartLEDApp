@@ -2,24 +2,12 @@ package de.hawhamburg.smartledapp.viewmodel;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ScaleDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.media.Image;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-
-import java.util.Calendar;
-
 import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.profile.Profile;
@@ -33,6 +21,8 @@ public class LightViewModel extends AndroidViewModel {
         return lightImageViewColor;
     }
 
+    Profile activeProfile;
+
     public void setLightImageViewColor(MutableLiveData<Integer> lightImageViewColor) {
         this.lightImageViewColor = lightImageViewColor;
     }
@@ -40,11 +30,11 @@ public class LightViewModel extends AndroidViewModel {
     public LightViewModel(@NonNull Application application) {
         super(application);
         myApplication = (MyApplication) application;
+        activeProfile = myApplication.getProfileRepository().getActiveProfile();
         context = MyApplication.getAppContext();
     }
 
     public void setupBrightnessSeekBar(SeekBar seekBar, ImageView imageView){
-        Profile activeProfile = myApplication.getProfileRepository().getActiveProfile();
         seekBar.setProgress(activeProfile.getLightBrightness());
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -69,7 +59,6 @@ public class LightViewModel extends AndroidViewModel {
     }
 
     public void setupLightImageView(ImageView imageView) {
-        Profile activeProfile = myApplication.getProfileRepository().getActiveProfile();
         int brightness = activeProfile.getLightBrightness();
         int[] brightnessColors = myApplication.getResources().getIntArray(R.array.brightnessColors);
 
