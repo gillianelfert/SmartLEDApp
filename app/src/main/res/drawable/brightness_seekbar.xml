@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:gravity="center_vertical">
+    <item android:id="@+id/seekbarBackground" android:gravity="center_vertical">
         <shape android:shape="rectangle">
             <solid android:color="#F1F1F1"/>
             <gradient
-                android:endColor="#B3B3B3"
+                android:endColor="#E6E6E6"
                 android:startColor="#E4E4E4"
                 android:angle="270"
                 />
@@ -12,7 +12,7 @@
             <corners android:radius="20dp"/>
         </shape>
     </item>
-    <item android:gravity="center_vertical">
+    <item android:id="@+id/seekbarProgress" android:gravity="center_vertical">
         <scale android:scaleWidth="100%">
             <selector>
                 <item android:state_enabled="false"

@@ -12,15 +12,15 @@
 
     <TextView
         android:id="@+id/profileNameTextView"
-        android:layout_width="236dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="217dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="44dp"
         android:text="Profile Name"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.238" />
 
     <RadioButton
         android:id="@+id/profileRadioButton"
@@ -28,7 +28,7 @@
         android:layout_height="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toEndOf="@+id/profileNameTextView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.507" />
@@ -37,13 +37,13 @@
         android:id="@+id/modeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background_orange"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="2dp"
         android:text="Mode"
         android:textSize="18dp"
-        android:background="@drawable/rounded_background_orange"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="2dp"
-        android:paddingTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/profileNameTextView"
         app:layout_constraintHorizontal_bias="0.0"
