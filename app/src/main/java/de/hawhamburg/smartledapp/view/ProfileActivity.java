@@ -37,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
     public ProfileViewModel profileViewModel;
     private RecyclerView profilesRecView;
     private MyApplication myApplication;
+    MqttClient mqttClient;
     CalculationClass calculationClass = new CalculationClass(this);
 
 
@@ -46,6 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
+        mqttClient = new MqttClient();
+        mqttClient.connectToBroker("my-mqtt-client-id", "broker.hivemq.com", 1883, "my-user", "my-password");
 
         setContentView(R.layout.activity_profile);
 
