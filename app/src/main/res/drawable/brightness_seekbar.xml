@@ -16,10 +16,10 @@
         <scale android:scaleWidth="100%">
             <selector>
                 <item android:state_enabled="false"
-                    android:drawable="@color/colorPrimary" />
+                    android:drawable="@color/brightness90to100" />
                 <item>
                     <shape>
-                        <solid android:color="@color/colorPrimary" />
+                        <solid android:color="@color/brightness90to100" />
                         <size android:height="50dp"/>
                         <corners android:radius="10dp"/>
                     </shape>

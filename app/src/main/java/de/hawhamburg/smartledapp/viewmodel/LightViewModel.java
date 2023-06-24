@@ -70,12 +70,15 @@ public class LightViewModel extends AndroidViewModel {
         int brightness = myApplication.getProfileRepository().getActiveProfile().getLightBrightness();
         int[] brightnessColors = myApplication.getResources().getIntArray(R.array.brightnessColors);
 
-        int index = Math.min(brightness / 10, brightnessColors.length - 1); // Begrenzung des Index auf den maximalen Wert im Array
+        int colorIndex;
+        if (brightness == 0) {
+            colorIndex = 0;
+        } else {
+            colorIndex = Math.min((brightness / 10) + 1, brightnessColors.length - 1);
+        }
 
-        int color = brightnessColors[index];
+        int color = brightnessColors[colorIndex];
         imageView.setColorFilter(color);
-
-
     }
 
 }

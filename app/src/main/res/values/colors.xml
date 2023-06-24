@@ -12,7 +12,7 @@
     <color name="lavender">#8692f7</color>
 
 
-    <color name="brightness0">#EFEFEF</color>
+    <color name="brightness0">#E4E4E4</color>
     <color name="brightness1to9">#ffe880</color>
     <color name="brightness10to19">#ffe573</color>
     <color name="brightness20to29">#ffe366</color>
