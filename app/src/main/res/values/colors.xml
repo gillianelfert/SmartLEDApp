@@ -10,4 +10,17 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lightgray">#D5D5D5</color>
     <color name="lavender">#8692f7</color>
+
+
+    <color name="brightness0">#EFEFEF</color>
+    <color name="brightness1to9">#ffe880</color>
+    <color name="brightness10to19">#ffe573</color>
+    <color name="brightness20to29">#ffe366</color>
+    <color name="brightness30to39">#ffe159</color>
+    <color name="brightness40to49">#ffde4d</color>
+    <color name="brightness50to59">#ffde4d</color>
+    <color name="brightness60to69">#ffda33</color>
+    <color name="brightness70to79">#ffda33</color>
+    <color name="brightness80to89">#ffd519</color>
+    <color name="brightness90to100">#ffd30d</color>
 </resources>

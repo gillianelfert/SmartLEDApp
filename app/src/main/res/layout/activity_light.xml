@@ -10,6 +10,8 @@
         android:id="@+id/brightnessSeekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
         android:layout_centerInParent="true"
         android:indeterminate="false"
         android:max="100"
@@ -17,9 +19,10 @@
         android:progressDrawable="@drawable/brightness_seekbar"
         android:thumb="@drawable/brightness_thumb"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintTop_toBottomOf="@+id/lightTitleTextView"
-        tools:layout_editor_absoluteX="0dp"
-        android:elevation="10dp"/>
+        app:layout_constraintEnd_toEndOf="@+id/lightImageView"
+        app:layout_constraintStart_toStartOf="@+id/lightImageView"
+        app:layout_constraintTop_toBottomOf="@+id/lightImageView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -43,5 +46,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.025" />
+
+    <ImageView
+        android:id="@+id/lightImageView"
+        android:layout_width="247dp"
+        android:layout_height="222dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lightTitleTextView"
+        app:srcCompat="@drawable/ic_light_24dp_black"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,8 @@
                 android:startColor="#E4E4E4"
                 android:angle="270"
                 />
-            <size android:height="200dp"/>
-            <corners android:radius="20dp"/>
+            <size android:height="50dp"/>
+            <corners android:radius="10dp"/>
         </shape>
     </item>
     <item android:id="@+id/seekbarProgress" android:gravity="center_vertical">
@@ -20,8 +20,8 @@
                 <item>
                     <shape>
                         <solid android:color="@color/colorPrimary" />
-                        <size android:height="200dp"/>
-                        <corners android:radius="20dp"/>
+                        <size android:height="50dp"/>
+                        <corners android:radius="10dp"/>
                     </shape>
                 </item>
             </selector>

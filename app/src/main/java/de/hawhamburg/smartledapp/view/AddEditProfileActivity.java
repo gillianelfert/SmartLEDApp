@@ -40,12 +40,12 @@ public class AddEditProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         if(intent.hasExtra(EXTRA_ID)){
-            setTitle("Edit Profile");
+            setTitle("Profil bearbeiten");
             editTextName.setText(intent.getStringExtra(EXTRA_NAME));
             clapModeSwitch.setChecked(intent.getBooleanExtra(EXTRA_CLAP_MODE,true));
 
         } else {
-            setTitle("Add Profile");
+            setTitle("Profil hinzufügen");
         }
 
 
@@ -56,7 +56,7 @@ public class AddEditProfileActivity extends AppCompatActivity {
         boolean clapMode = clapModeSwitch.isChecked();
 
         if (name.trim().isEmpty()){
-            Toast.makeText(this,"Please insert a name.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Bitte einen Namen eingeben",Toast.LENGTH_SHORT).show();
             return;
         }
 

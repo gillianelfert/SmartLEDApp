@@ -75,7 +75,7 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
     }
 
     private void updateTimeText(Calendar c){
-        String timeText = "Wecker gestellt für: ";
+        String timeText = "Wecker gestellt für: \n";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
 
         mTextView.setText(timeText);

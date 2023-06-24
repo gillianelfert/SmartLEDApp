@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="brightnessColors">
+        <item>@color/brightness0</item>
+        <item>@color/brightness10to19</item>
+b        <item>@color/brightness20to29</item>
+        <item>@color/brightness30to39</item>
+        <item>@color/brightness40to49</item>
+        <item>@color/brightness50to59</item>
+        <item>@color/brightness60to69</item>
+        <item>@color/brightness70to79</item>
+        <item>@color/brightness80to89</item>
+        <item>@color/brightness90to100</item>
+    </integer-array>
+</resources>
