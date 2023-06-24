@@ -40,8 +40,8 @@ public class LightViewModel extends AndroidViewModel {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                myApplication.getProfileRepository().getActiveProfile().setLightBrightness(progress);
-                myApplication.getProfileRepository().update(myApplication.getProfileRepository().getActiveProfile());
+                activeProfile.setLightBrightness(progress);
+                myApplication.getProfileRepository().update(activeProfile);
                 seekBar.setProgress(progress);
                 setupLightImageView(imageView);
             }
@@ -72,5 +72,4 @@ public class LightViewModel extends AndroidViewModel {
         int color = brightnessColors[colorIndex];
         imageView.setColorFilter(color);
     }
-
 }

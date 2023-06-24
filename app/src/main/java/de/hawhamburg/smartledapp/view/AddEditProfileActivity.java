@@ -10,10 +10,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import de.hawhamburg.smartledapp.MyApplication;
 import de.hawhamburg.smartledapp.R;
-import de.hawhamburg.smartledapp.viewmodel.AlarmViewModel;
+import de.hawhamburg.smartledapp.model.profile.Profile;
 
 public class AddEditProfileActivity extends AppCompatActivity {
     public static final String EXTRA_ID =
@@ -25,6 +27,8 @@ public class AddEditProfileActivity extends AppCompatActivity {
 
     private EditText editTextName;
     private Switch clapModeSwitch;
+    private TextView lightModeTextView, clapModeTextView;
+    MyApplication myApplication;
 
 
     @Override
@@ -32,8 +36,16 @@ public class AddEditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_profile);
 
-        editTextName = findViewById(R.id.edit_text_name);
-        clapModeSwitch = findViewById(R.id.clap_mode_switch);
+        myApplication = (MyApplication) getApplication();
+
+        editTextName = findViewById(R.id.nameEditText);
+        clapModeSwitch = findViewById(R.id.modeSwitch);
+        lightModeTextView = findViewById(R.id.lightModeTextView);
+        clapModeTextView = findViewById(R.id.clapModeTextView);
+
+        clapModeTextView.setEnabled(myApplication.getProfileRepository().getActiveProfile().isReactsToClap());
+
+
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
@@ -83,10 +95,10 @@ public class AddEditProfileActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-                saveProfile();
-                return true;
-
-
+        if (item.getItemId() == R.id.save_profile){
+            saveProfile();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

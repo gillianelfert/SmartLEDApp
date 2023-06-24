@@ -95,7 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 profileViewModel.delete(adapter.getProfileAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(ProfileActivity.this, "Profile deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, "Profil gelöscht", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(profilesRecView);
 
@@ -120,12 +120,12 @@ public class ProfileActivity extends AppCompatActivity {
             boolean clapMode = data.getBooleanExtra(AddEditProfileActivity.EXTRA_CLAP_MODE,true);
             Profile profile = new Profile(name,clapMode,false,false,100);
             profileViewModel.insert(profile);
-            Toast.makeText(this, "Profile saved.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Profil gespeichert.", Toast.LENGTH_SHORT).show();
         }else if(requestCode == EDIT_PROFILE_REQUEST && resultCode == RESULT_OK){
             int id = data.getIntExtra(AddEditProfileActivity.EXTRA_ID,-1);
 
             if(id == -1) {
-                Toast.makeText(this, "Profile cant be updated.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Profil kann nicht aktualisiert werden.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -135,10 +135,10 @@ public class ProfileActivity extends AppCompatActivity {
             Profile profile = new Profile(name,clapMode,profileViewModel.getProfileWithID(id).isStatus(),false,100);
             profile.setId(id);
             profileViewModel.update(profile);
-            Toast.makeText(this, "Profile updated.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Profil aktualisiert.", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(this, "Profile not saved.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Profil wurde nicht gespeichert.", Toast.LENGTH_SHORT).show();
         }
     }
     private void setUpMQTT() {
