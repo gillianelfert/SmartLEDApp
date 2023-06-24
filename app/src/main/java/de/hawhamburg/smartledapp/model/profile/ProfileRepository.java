@@ -63,8 +63,17 @@ public class ProfileRepository {
                     return profile;
                 }
             }
+            if (!profiles.isEmpty()) {
+                Profile firstProfile = profiles.get(0);
+                firstProfile.setActive();
+                update(firstProfile);
+                return firstProfile;
+            }
         }
-        return null;
+
+        Profile newProfile = new Profile("Standard", false, true, true, 100);
+        insert(newProfile);
+        return newProfile;
     }
 
     private static class InsertProfileAsyncTask extends AsyncTask<Profile,Void,Void> {
