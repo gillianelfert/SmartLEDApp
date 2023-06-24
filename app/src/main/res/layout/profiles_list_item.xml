@@ -12,15 +12,15 @@
 
     <TextView
         android:id="@+id/profileNameTextView"
-        android:layout_width="217dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="44dp"
+        android:layout_width="179dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="64dp"
         android:text="Profile Name"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <RadioButton
         android:id="@+id/profileRadioButton"
