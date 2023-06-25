@@ -47,6 +47,7 @@ public class AddEditProfileActivity extends AppCompatActivity {
         modeSwitch = findViewById(R.id.modeSwitch);
         lightModeTextView = findViewById(R.id.lightModeTextView);
         clapModeTextView = findViewById(R.id.clapModeTextView);
+
         addEditProfileViewModel.setupTextViewColors(lightModeTextView, clapModeTextView, modeSwitch);
 
         modeSwitch.setOnClickListener(v->{

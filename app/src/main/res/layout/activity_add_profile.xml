@@ -22,22 +22,25 @@
 
     <Switch
         android:id="@+id/modeSwitch"
-        android:layout_width="53dp"
-        android:layout_height="48dp"
+        android:layout_width="41dp"
+        android:layout_height="72dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
+        android:thumb="@drawable/thumb"
+        android:track="@drawable/track"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditText"
-        app:layout_constraintVertical_bias="0.138" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <TextView
         android:id="@+id/lightModeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/light_mode"
-        android:textSize="18dp"
+        android:text="Light\nMode"
+        android:textSize="22dp"
+        android:gravity="center_horizontal|center_vertical"
         app:layout_constraintBottom_toBottomOf="@+id/modeSwitch"
         app:layout_constraintEnd_toStartOf="@+id/modeSwitch"
         app:layout_constraintHorizontal_bias="0.842"
@@ -48,8 +51,9 @@
         android:id="@+id/clapModeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/clap_mode"
-        android:textSize="18dp"
+        android:text="Clap\nMode"
+        android:textSize="22dp"
+        android:gravity="center_horizontal|center_vertical"
         app:layout_constraintBottom_toBottomOf="@+id/modeSwitch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.193"
