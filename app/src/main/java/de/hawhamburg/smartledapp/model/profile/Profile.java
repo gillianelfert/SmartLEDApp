@@ -1,9 +1,8 @@
 package de.hawhamburg.smartledapp.model.profile;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
-import de.hawhamburg.smartledapp.model.light.Light;
 
 @Entity(tableName = "profile_table")
 public class Profile {
@@ -14,6 +13,9 @@ public class Profile {
     private boolean status;
     private boolean lightIsOn;
     private int lightBrightness;
+
+    @Ignore
+    private int previousLightBrightness;
 
     public boolean isLightIsOn() {
         return lightIsOn;
@@ -41,6 +43,7 @@ public class Profile {
         this.status = status;
         this.lightIsOn = lightIsOn;
         this.lightBrightness = lightBrightness;
+        this.previousLightBrightness = lightBrightness;
     }
 
     public boolean isStatus() {
@@ -52,21 +55,26 @@ public class Profile {
         else{return "Light Mode";}
     }
 
-    public boolean isLightOn() {
-        return lightIsOn;
-    }
-
     public int getLightBrightness() {
         return lightBrightness;
     }
 
     public void setLightBrightness(int lightBrightness) {
+        this.previousLightBrightness = this.lightBrightness;
         this.lightBrightness = lightBrightness;
     }
 
+    public int getPreviousLightBrightness() {
+        return previousLightBrightness;
+    }
+
     public void toggleMode(){
-        if(this.reactsToClap){reactsToClap = false;}
-        else {this.reactsToClap = true;}
+        if(this.reactsToClap) {
+            reactsToClap = false;
+        }
+        else{
+            this.reactsToClap = true;
+        }
     }
 
     public void setActive(){

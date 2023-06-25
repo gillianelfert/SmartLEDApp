@@ -17,15 +17,7 @@ public class LightViewModel extends AndroidViewModel {
     Context context;
     private MutableLiveData<Integer> lightImageViewColor = new MutableLiveData<>();
 
-    public MutableLiveData<Integer> getLighImageViewColor() {
-        return lightImageViewColor;
-    }
-
     Profile activeProfile;
-
-    public void setLightImageViewColor(MutableLiveData<Integer> lightImageViewColor) {
-        this.lightImageViewColor = lightImageViewColor;
-    }
 
     public LightViewModel(@NonNull Application application) {
         super(application);

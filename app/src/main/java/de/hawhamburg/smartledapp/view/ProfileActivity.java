@@ -36,9 +36,8 @@ public class ProfileActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     public ProfileViewModel profileViewModel;
     private RecyclerView profilesRecView;
-    private MyApplication myApplication;
-    MqttClient mqttClient;
-    CalculationClass calculationClass = new CalculationClass(this);
+    private CalculationClass calculationClass;
+
 
 
     @Override
@@ -46,10 +45,6 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
-
-
-        mqttClient = new MqttClient();
-        mqttClient.connectToBroker("my-mqtt-client-id", "broker.hivemq.com", 1883, "my-user", "my-password");
 
         setContentView(R.layout.activity_profile);
 
@@ -77,13 +72,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        //setUpMQTT();
-
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
         BottomNavigationHelper.setupBottomNavigation(this,bottomNavigationView);
 
         getSupportActionBar().hide();
+
+
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT) {
@@ -141,13 +136,6 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(this, "Profil wurde nicht gespeichert.", Toast.LENGTH_SHORT).show();
         }
     }
-    private void setUpMQTT() {
-        calculationClass.setUpUnit();
-    }
 
-    @Override
-    protected void onDestroy() {
-        //calculationClass.disconnectFromBroker();
-        super.onDestroy();
-    }
+
 }

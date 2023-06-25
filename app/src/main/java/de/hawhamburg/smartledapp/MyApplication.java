@@ -11,6 +11,8 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+import de.hawhamburg.smartledapp.model.mqtt.CalculationClass;
+import de.hawhamburg.smartledapp.model.mqtt.MqttClient;
 import de.hawhamburg.smartledapp.model.profile.Profile;
 import de.hawhamburg.smartledapp.model.profile.ProfileRepository;
 
@@ -18,6 +20,8 @@ public class MyApplication extends Application {
     private ProfileRepository profileRepository;
     private MutableLiveData<List<Profile>> profileLiveData;
     private static Context appContext;
+
+    private CalculationClass calculationClass;
 
     @Override
     public void onCreate() {
@@ -30,6 +34,9 @@ public class MyApplication extends Application {
         allProfilesLiveData.observeForever(profiles -> {
             profileLiveData.setValue(profiles);
         });
+
+        Thread thread = new Thread(new CalculationClass(getAppContext()));
+        thread.start();
     }
 
     public static Context getAppContext() {
@@ -40,15 +47,4 @@ public class MyApplication extends Application {
         return profileRepository;
     }
 
-    public void setProfileRepository(ProfileRepository profileRepository) {
-        this.profileRepository = profileRepository;
-    }
-
-    public MutableLiveData<List<Profile>> getProfileLiveData() {
-        return profileLiveData;
-    }
-
-    public void setProfileLiveData(MutableLiveData<List<Profile>> profileLiveData) {
-        this.profileLiveData = profileLiveData;
-    }
 }
