@@ -1,6 +1,5 @@
 package de.hawhamburg.smartledapp.model.mqtt;
 
-import android.app.Activity;
 import android.content.Context;
 
 import java.nio.charset.StandardCharsets;
@@ -35,7 +34,6 @@ public class CalculationClass implements Runnable{
 
         listenToTopic(DEZIBEL);
         listenToTopic(BRIGHTNESS);
-        listenToTopic("value");
     }
 
     public void connectToMQTT() throws InterruptedException{

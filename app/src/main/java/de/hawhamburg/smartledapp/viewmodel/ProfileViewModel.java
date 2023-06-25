@@ -57,6 +57,4 @@ public class ProfileViewModel extends AndroidViewModel {
         return new Profile("Blueprint", true, true, true, 100);
     }
 
-
-
 }
