@@ -11,11 +11,9 @@ public class MqttClient {
 
     private Mqtt3AsyncClient client;
 
-    public boolean connectToBroker(String identifier, String host, int port, String username, String password) {
+    public void connectToBroker(String identifier, String host, int port, String username, String password) {
         client = com.hivemq.client.mqtt.MqttClient.builder().useMqttVersion3().identifier(identifier).serverHost(host)
                 .serverPort(port).buildAsync();
-
-        AtomicBoolean isConnected = new AtomicBoolean(false);
 
         client.connectWith().simpleAuth().username(username).password(password.getBytes()).applySimpleAuth().send()
                 .whenComplete((connAck, throwable) -> {
@@ -23,10 +21,8 @@ public class MqttClient {
                         throwable.printStackTrace();
                     } else {
                         Log.info("Connected to '%s:%d'".format(host, port));
-                        isConnected.set(true);
                     }
                 });
-        return isConnected.get();
     }
 
 

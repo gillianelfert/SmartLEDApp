@@ -10,7 +10,7 @@ import de.hawhamburg.smartledapp.model.profile.Profile;
 public class CalculationClass {
     private MqttClient mqttClient;
     private static final String BRIGHTNESS = "brightness";
-    private static final String DEZIBEL = "values";
+    private static final String DEZIBEL = "dezibel";
     private static final String MODE = "mode";
     private static final String VALUE = "value";
 
@@ -32,15 +32,12 @@ public class CalculationClass {
 
         listenToTopic(DEZIBEL);
         listenToTopic(BRIGHTNESS);
+        mqttClient.publish(DEZIBEL,"200");
     }
 
     public void connectToMQTT() throws InterruptedException{
         mqttClient = new MqttClient();
-        mqttClient.connectToBroker("my-mqtt-client-id", "broker.hivemq.com", 1883, "my-user", "my-password");
-        Thread.sleep(100);
-
-
-        Thread.sleep(100);
+        mqttClient.connectToBroker("my-mqtt-client-id", "192.168.178.24", 1883,"Jan","123");
     }
 
     public void listenToTopic(String topic){
@@ -49,6 +46,7 @@ public class CalculationClass {
                 var convertedMessageContent = new String(message.getPayloadAsBytes(), StandardCharsets.UTF_8);
                 System.out.printf("Message received from topic '%s': '%s'%n", message.getTopic(),
                         convertedMessageContent);
+                calculationUnit(convertedMessageContent);
                 calculationUnit(convertedMessageContent);
             } catch (Exception e) {
 
@@ -69,7 +67,6 @@ public class CalculationClass {
             mqttClient.publish(MODE, "a");
         }else {
             mqttClient.publish(MODE, "l");
-
         }
     }
 

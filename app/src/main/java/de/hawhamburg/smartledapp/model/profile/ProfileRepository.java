@@ -71,8 +71,6 @@ public class ProfileRepository {
             }
         }
 
-        System.out.println("INSERRRRT");
-
         Profile newProfile = new Profile("Standard", false, true, true, 100);
         insert(newProfile);
 
