@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SmartLEDApp</string>
+    <string name="app_name">LEDsGO</string>
     <string name="clap_mode">Clap Mode</string>
     <string name="light_mode">Light Mode</string>
 </resources>

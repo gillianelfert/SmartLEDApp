@@ -36,7 +36,6 @@ public class ProfileActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     public ProfileViewModel profileViewModel;
     private RecyclerView profilesRecView;
-    private CalculationClass calculationClass;
 
 
 

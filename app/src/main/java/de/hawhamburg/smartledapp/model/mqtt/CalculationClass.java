@@ -26,7 +26,7 @@ public class CalculationClass implements Runnable{
         myApplication = (MyApplication) context.getApplicationContext();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             connectToMQTT();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

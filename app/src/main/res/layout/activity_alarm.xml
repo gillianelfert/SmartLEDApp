@@ -23,14 +23,15 @@
         android:id="@+id/no_alarm_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kein Wecker gestellt"
+        android:gravity="center_horizontal|center_vertical"
+        android:text=" "
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintVertical_bias="0.416" />
 
     <TextView
         android:id="@+id/AlarmTitleTextView"
@@ -38,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="200dp"
-        android:text="Wecker"
+        android:text="Sleeptimer"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/timepicker_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,27 +50,30 @@
 
     <Button
         android:id="@+id/timepicker_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="264dp"
+        android:layout_height="65dp"
         android:layout_marginTop="36dp"
-        android:text="Wecker stellen"
+        android:text="Timer stellen"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="@+id/no_alarm_textview"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/no_alarm_textview"
         app:layout_constraintTop_toBottomOf="@+id/no_alarm_textview" />
 
     <Button
         android:id="@+id/button_cancel"
-        android:layout_width="166dp"
-        android:layout_height="42dp"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="6dp"
         android:layout_marginBottom="188dp"
         android:text="Abbrechen"
+        android:textSize="12dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/timepicker_button"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="@+id/timepicker_button"
         app:layout_constraintTop_toBottomOf="@+id/timepicker_button"
-        app:layout_constraintVertical_bias="0.392" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
