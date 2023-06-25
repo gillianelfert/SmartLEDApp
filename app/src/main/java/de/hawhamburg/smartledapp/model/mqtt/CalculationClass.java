@@ -56,11 +56,11 @@ public class CalculationClass implements Runnable{
 
     public void publishingUnit(String message, String topic){
         Profile activeProfile = myApplication.getProfileRepository().getActiveProfile();
-        if (topic.equals(DEZIBEL)){
+        if (topic.equals(DEZIBEL)&&activeProfile.isReactsToClap()){
             System.out.println();
             toggleLight(message, activeProfile);
             mqttClient.publish(VALUE, String.valueOf(activeProfile.getLightBrightness()));
-        }else if(topic.equals(BRIGHTNESS)){
+        }else if(topic.equals(BRIGHTNESS)&& !activeProfile.isReactsToClap()){
             if(Integer.valueOf(message) > ACTIVATE_AT_LUMINOSITY){
                 mqttClient.publish(VALUE, String.valueOf(activeProfile.getLightBrightness()));
             }else{
@@ -74,11 +74,10 @@ public class CalculationClass implements Runnable{
         if(Integer.valueOf(message) > ACTIVATE_AT_DEZIBEL){
             if(activeProfile.isLightIsOn()){
                 myApplication.getProfileRepository().getActiveProfile().setLightBrightness(0);
-                myApplication.getProfileRepository().getActiveProfile().toggleMode();
             }else if (!activeProfile.isLightIsOn()){
                 myApplication.getProfileRepository().getActiveProfile().setLightBrightness(activeProfile.getPreviousLightBrightness());
-                myApplication.getProfileRepository().getActiveProfile().toggleMode();
             }
+            myApplication.getProfileRepository().getActiveProfile().toggleLight();
         }
     }
 
@@ -87,7 +86,6 @@ public class CalculationClass implements Runnable{
             mqttClient.publish(MODE, "a");
         }else {
             mqttClient.publish(MODE, "l");
-
         }
     }
 

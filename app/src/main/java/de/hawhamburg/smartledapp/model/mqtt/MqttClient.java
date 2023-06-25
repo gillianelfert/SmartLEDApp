@@ -44,17 +44,8 @@ public class MqttClient {
             if (throwable != null) {
                 throwable.printStackTrace();
             }
+            Log.info("Message sent to '%s'".format(topic)+" : "+ message);
         });
     }
 
-    public void unsubscribe(String topic) {
-        client.unsubscribe(Mqtt3Unsubscribe.builder().topicFilter(topic).build());
-        Log.info("Unsubscribed from '%s'".format(topic));
-    }
-
-    public void disconnect() {
-        var serverHost = client.getConfig().getServerHost();
-        client.disconnect();
-        Log.info("Disconnected from '%s'".format(serverHost));
-    }
 }

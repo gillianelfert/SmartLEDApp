@@ -85,5 +85,13 @@ public class Profile {
         this.status = false;
     }
 
+    public void toggleLight(){
+        if(this.lightIsOn) {
+            lightIsOn = false;
+        }
+        else{
+            this.lightIsOn = true;
+        }
+    }
 
 }
