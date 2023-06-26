@@ -54,7 +54,6 @@ public class CalculationClass implements Runnable{
             }
         });
     }
-
     public void publishingUnit(String message, String topic){
         Profile activeProfile = myApplication.getProfileRepository().getActiveProfile();
         if (topic.equals(DEZIBEL)&&activeProfile.isReactsToClap()){

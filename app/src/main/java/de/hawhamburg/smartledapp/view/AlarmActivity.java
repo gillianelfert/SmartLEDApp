@@ -29,6 +29,7 @@ import de.hawhamburg.smartledapp.viewmodel.BottomNavigationHelper;
 public class AlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     AlarmViewModel alarmViewModel;
     BottomNavigationView bottomNavigationView;
+
     private TextView mTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +38,21 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
 
         getSupportActionBar().hide();
 
-        alarmViewModel = new ViewModelProvider(this).get(AlarmViewModel.class);
-
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.alarm);
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView);
 
+        alarmViewModel = new ViewModelProvider(this).get(AlarmViewModel.class);
+
         mTextView = findViewById(R.id.no_alarm_textview);
+
+        Button buttonCancelAlarm = findViewById(R.id.button_cancel);
+        buttonCancelAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancelAlarm();
+            }
+        });
 
         Button timePickerButton = findViewById(R.id.timepicker_button);
         timePickerButton.setOnClickListener(new View.OnClickListener() {
@@ -51,14 +60,6 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
             public void onClick(View view) {
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(),"time picker");
-            }
-        });
-
-        Button buttonCancelAlarm = findViewById(R.id.button_cancel);
-        buttonCancelAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cancelAlarm();
             }
         });
     }

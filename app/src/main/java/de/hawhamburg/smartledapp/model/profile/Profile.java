@@ -17,8 +17,13 @@ public class Profile {
     @Ignore
     private int previousLightBrightness;
 
-    public boolean isLightIsOn() {
-        return lightIsOn;
+    public Profile(String name, boolean reactsToClap, boolean status, boolean lightIsOn, int lightBrightness) {
+        this.name = name;
+        this.reactsToClap = reactsToClap;
+        this.status = status;
+        this.lightIsOn = lightIsOn;
+        this.lightBrightness = lightBrightness;
+        this.previousLightBrightness = lightBrightness;
     }
 
     public void setId(int id) {
@@ -33,17 +38,16 @@ public class Profile {
         return name;
     }
 
-    public boolean isReactsToClap() {
-        return reactsToClap;
+    public boolean isLightIsOn() {
+        return lightIsOn;
     }
 
-    public Profile(String name, boolean reactsToClap, boolean status, boolean lightIsOn, int lightBrightness) {
-        this.name = name;
-        this.reactsToClap = reactsToClap;
-        this.status = status;
+    public void setLightIsOn(boolean lightIsOn) {
         this.lightIsOn = lightIsOn;
-        this.lightBrightness = lightBrightness;
-        this.previousLightBrightness = lightBrightness;
+    }
+
+    public boolean isReactsToClap() {
+        return reactsToClap;
     }
 
     public boolean isStatus() {
