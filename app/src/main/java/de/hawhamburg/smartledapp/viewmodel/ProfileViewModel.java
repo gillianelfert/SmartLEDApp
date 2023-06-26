@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 import de.hawhamburg.smartledapp.model.profile.Profile;
+import de.hawhamburg.smartledapp.model.profile.ProfileDao;
 import de.hawhamburg.smartledapp.model.profile.ProfileRepository;
 
 
@@ -19,13 +20,17 @@ public class ProfileViewModel extends AndroidViewModel {
     private ProfileRepository profileRepository;
     private LiveData<List<Profile>> allProfiles;
 
+
     public ProfileViewModel(@NonNull Application application) {
         super(application);
         profileRepository = new ProfileRepository(application);
         allProfiles = profileRepository.getAllProfiles();
+
     }
 
-
+    public ProfileRepository getProfileRepository() {
+        return profileRepository;
+    }
 
     public void insert(Profile profile){
         profileRepository.insert(profile);

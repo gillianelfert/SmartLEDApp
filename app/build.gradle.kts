@@ -15,7 +15,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
     packagingOptions {
         exclude("META-INF/INDEX.LIST")
         exclude ("META-INF/io.netty.versions.properties")
@@ -33,11 +32,13 @@ android {
     }
 }
 
+
+
 dependencies {
     val lifecycle_version = "2.6.1"
     val room_version = "2.5.1"
 
-
+    implementation("org.mockito:mockito-core:5.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata:$lifecycle_version")
     annotationProcessor("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
@@ -58,6 +59,13 @@ dependencies {
 
     testImplementation ("org.mockito:mockito-core:5.4.0")
     androidTestImplementation("org.mockito:mockito-android:5.4.0")
+    androidTestImplementation ("androidx.test:core:1.4.0")
+    androidTestImplementation ("androidx.test:runner:1.4.0")
+    androidTestImplementation ("androidx.test.ext:junit:1.1.5@aar")
+    androidTestImplementation ("androidx.arch.core:core-testing:2.1.0")
+    testImplementation ("android.arch.core:core-testing:1.0.0")
+    androidTestUtil("androidx.test:orchestrator:1.1.0")
+
 }
 
 dependencies {

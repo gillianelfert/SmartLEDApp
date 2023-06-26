@@ -13,6 +13,7 @@ public class CalculationClass implements Runnable{
     private static final String DEZIBEL = "dezibel";
     private static final String MODE = "mode";
     private static final String VALUE = "value";
+
     public static final int ACTIVATE_AT_DEZIBEL = 100;
     public static final int ACTIVATE_AT_LUMINOSITY = 110;
     private MyApplication myApplication;
@@ -70,7 +71,7 @@ public class CalculationClass implements Runnable{
         updateMode();
     }
 
-    private void toggleLight(String message, Profile activeProfile) {
+    public void toggleLight(String message, Profile activeProfile) {
         if(Integer.valueOf(message) > ACTIVATE_AT_DEZIBEL){
             if(activeProfile.isLightIsOn()){
                 myApplication.getProfileRepository().getActiveProfile().setLightBrightness(0);

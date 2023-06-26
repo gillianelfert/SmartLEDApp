@@ -11,7 +11,11 @@ public class MqttClient {
 
     private Mqtt3AsyncClient client;
 
-    public void connectToBroker(String identifier, String host, int port, String username, String password) {
+    public Mqtt3AsyncClient getClient() {
+        return client;
+    }
+
+    public boolean connectToBroker(String identifier, String host, int port, String username, String password) {
         client = com.hivemq.client.mqtt.MqttClient.builder().useMqttVersion3().identifier(identifier).serverHost(host)
                 .serverPort(port).buildAsync();
 
@@ -23,6 +27,8 @@ public class MqttClient {
                         Log.info("Connected to '%s:%d'".format(host, port));
                     }
                 });
+
+        return client.getState().isConnected();
     }
 
 
