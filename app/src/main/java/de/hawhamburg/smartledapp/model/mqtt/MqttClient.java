@@ -32,7 +32,7 @@ public class MqttClient {
     }
 
 
-    public void subscribe(String topic, Consumer<Mqtt3Publish> consumer) {
+    public boolean subscribe(String topic, Consumer<Mqtt3Publish> consumer) {
         client.subscribeWith().topicFilter(topic)
                 //.callback(publish -> receiveData(publish.getTopic().toString(), new String(publish.getPayloadAsBytes())))
                 .callback(consumer).send().whenComplete((subAck, throwable) -> {
@@ -42,16 +42,17 @@ public class MqttClient {
                         Log.info("Subscribed to '%s'".format(topic));
                     }
                 });
-
+        return true;
     }
 
-    public void publish(String topic, String message) {
+    public boolean publish(String topic, String message) {
         client.publishWith().topic(topic).payload(message.getBytes()).send().whenComplete((publish, throwable) -> {
             if (throwable != null) {
                 throwable.printStackTrace();
             }
             Log.info("Message sent to '%s'".format(topic)+" : "+ message);
         });
+        return true;
     }
 
 }
