@@ -28,10 +28,6 @@ public class ProfileViewModel extends AndroidViewModel {
 
     }
 
-    public ProfileRepository getProfileRepository() {
-        return profileRepository;
-    }
-
     public void insert(Profile profile){
         profileRepository.insert(profile);
     }
@@ -42,10 +38,6 @@ public class ProfileViewModel extends AndroidViewModel {
 
     public void delete(Profile profile){
         profileRepository.delete(profile);
-    }
-
-    public void deleteAllProfiles(){
-        profileRepository.deleteAllProfiles();
     }
 
     public LiveData<List<Profile>> getAllProfiles(){

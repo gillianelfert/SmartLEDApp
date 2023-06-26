@@ -10,7 +10,6 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.AlarmClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,11 +22,9 @@ import java.util.Calendar;
 
 import de.hawhamburg.smartledapp.R;
 import de.hawhamburg.smartledapp.model.alarm.AlertReceiver;
-import de.hawhamburg.smartledapp.viewmodel.AlarmViewModel;
 import de.hawhamburg.smartledapp.viewmodel.BottomNavigationHelper;
 
 public class AlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
-    AlarmViewModel alarmViewModel;
     BottomNavigationView bottomNavigationView;
 
     private TextView mTextView;
@@ -41,8 +38,6 @@ public class AlarmActivity extends AppCompatActivity implements TimePickerDialog
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.alarm);
         BottomNavigationHelper.setupBottomNavigation(this, bottomNavigationView);
-
-        alarmViewModel = new ViewModelProvider(this).get(AlarmViewModel.class);
 
         mTextView = findViewById(R.id.no_alarm_textview);
 

@@ -5,7 +5,4 @@ public class Log {
         System.out.println(string);
     }
 
-    public static void error(String string) {
-        System.err.println(string);
-    }
 }

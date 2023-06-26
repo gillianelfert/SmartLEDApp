@@ -19,9 +19,7 @@ import de.hawhamburg.smartledapp.viewmodel.LightViewModel;
 
 public class LightActivity extends AppCompatActivity {
     private LightViewModel lightViewModel;
-    private MyApplication myApplication;
     private BottomNavigationView bottomNavigationView;
-    private CalculationClass calculationClass = new CalculationClass(this);
     private SeekBar brightnessSeekBar;
     private ImageView lightImageView;
 
@@ -30,7 +28,6 @@ public class LightActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light);
 
-        myApplication = (MyApplication) this.getApplication();
 
         getSupportActionBar().hide();
 

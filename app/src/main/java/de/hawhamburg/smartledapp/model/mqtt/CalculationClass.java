@@ -39,7 +39,7 @@ public class CalculationClass implements Runnable{
 
     public void connectToMQTT() throws InterruptedException{
         mqttClient = new MqttClient();
-        mqttClient.connectToBroker("my-mqtt-client-id", "broker.hivemq.com", 1883, "my-user", "my-password");
+        mqttClient.connectToBroker("my-mqtt-client-id", "172.20.10.3", 1883, "Jan", "123");
     }
 
     public void listenToTopic(String topic){
