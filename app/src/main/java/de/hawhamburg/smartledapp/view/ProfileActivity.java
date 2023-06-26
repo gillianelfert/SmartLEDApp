@@ -33,19 +33,38 @@ public class ProfileActivity extends AppCompatActivity {
 
     public static final int ADD_PROFILE_REQUEST = 1;
     public static final int EDIT_PROFILE_REQUEST = 2;
-    BottomNavigationView bottomNavigationView;
+
     public ProfileViewModel profileViewModel;
+    BottomNavigationView bottomNavigationView;
+
     private RecyclerView profilesRecView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
+
+        getSupportActionBar().hide();
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
+        BottomNavigationHelper.setupBottomNavigation(this,bottomNavigationView);
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
-        setContentView(R.layout.activity_profile);
+        profilesRecView = findViewById(R.id.profilesRecView);
+        profilesRecView.setLayoutManager(new LinearLayoutManager(this));
+        profilesRecView.setHasFixedSize(true);
+
+        ProfileAdapter adapter = new ProfileAdapter(profileViewModel, this);
+        profilesRecView.setAdapter(adapter);
+
+        profileViewModel.getAllProfiles().observe(this, new Observer<List<Profile>>() {
+            @Override
+            public void onChanged(List<Profile> profiles) {
+                adapter.setProfiles(profiles);
+            }
+        });
 
         FloatingActionButton buttonAddProfile = findViewById(R.id.button_add_profile);
         buttonAddProfile.setOnClickListener(new View.OnClickListener() {
@@ -55,29 +74,6 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivityForResult(intent,ADD_PROFILE_REQUEST);
             }
         });
-
-        profilesRecView = findViewById(R.id.profilesRecView);
-        profilesRecView.setLayoutManager(new LinearLayoutManager(this));
-        profilesRecView.setHasFixedSize(true);
-
-        ProfileAdapter adapter = new ProfileAdapter(profileViewModel, this);
-        profilesRecView.setAdapter(adapter);
-
-
-        profileViewModel.getAllProfiles().observe(this, new Observer<List<Profile>>() {
-            @Override
-            public void onChanged(List<Profile> profiles) {
-                adapter.setProfiles(profiles);
-            }
-        });
-
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.profile);
-        BottomNavigationHelper.setupBottomNavigation(this,bottomNavigationView);
-
-        getSupportActionBar().hide();
-
-
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT) {

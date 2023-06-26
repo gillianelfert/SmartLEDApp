@@ -24,40 +24,26 @@ public class LightActivity extends AppCompatActivity {
     private CalculationClass calculationClass = new CalculationClass(this);
     private SeekBar brightnessSeekBar;
     private ImageView lightImageView;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myApplication = (MyApplication) this.getApplication();
-        lightViewModel = new ViewModelProvider(this).get(LightViewModel.class);
-
-        //connectToMQTT();
-
         setContentView(R.layout.activity_light);
 
+        myApplication = (MyApplication) this.getApplication();
+
         getSupportActionBar().hide();
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.light);
+        BottomNavigationHelper.setupBottomNavigation(this,bottomNavigationView);
+
+        lightViewModel = new ViewModelProvider(this).get(LightViewModel.class);
 
         lightImageView = findViewById(R.id.lightImageView);
         lightViewModel.setupLightImageView(lightImageView);
 
         brightnessSeekBar = findViewById(R.id.brightnessSeekBar);
         lightViewModel.setupBrightnessSeekBar(brightnessSeekBar, lightImageView);
-
-
-
-
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.light);
-        BottomNavigationHelper.setupBottomNavigation(this,bottomNavigationView);
-
-    }
-
-    private void connectToMQTT() {
-        try {
-            calculationClass.connectToMQTT();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
