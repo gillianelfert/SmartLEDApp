@@ -8,9 +8,6 @@ import de.hawhamburg.smartledapp.R;
 
 public class AddEditProfileViewModel {
 
-    public AddEditProfileViewModel() {
-    }
-
     public void setupTextViewColors(TextView lightModeTextView, TextView clapModeTextView, Switch modeSwitch){
         String checkedColor = "#FFBA55";
         String uncheckedColor = "#757575";
